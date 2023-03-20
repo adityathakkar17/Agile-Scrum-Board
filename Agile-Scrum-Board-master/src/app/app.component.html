@@ -1,0 +1,36 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<nav class="bg-blue-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex">
+          <a href="#" class="flex-shrink-0 flex items-center text-white">
+            Agile Scrum Board
+          </a>
+        </div>
+        <div class="flex">
+          <!-- <div class="hidden sm:ml-6 sm:flex sm:items-center">
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">KanbanBoard</a>
+          </div> -->
+          <div class="hidden sm:ml-6 sm:flex sm:items-center">
+            <a *ngIf="!_authService.loggedIn()" routerLink="/login"  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
+          </div>
+          <div class="hidden sm:ml-6 sm:flex sm:items-center">
+            <a *ngIf="!_authService.loggedIn()" routerLink="/register" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
+          </div>
+          <div class="hidden sm:ml-6 sm:flex sm:items-center">
+            <a *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" style="cursor:pointer" (click)="_authService.logoutUser()">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container ">
+    <router-outlet></router-outlet>            
+  </div>
+   
+
+   
+ 

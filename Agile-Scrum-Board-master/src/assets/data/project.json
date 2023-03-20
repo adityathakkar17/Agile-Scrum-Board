@@ -1,0 +1,115 @@
+{
+  "id": "140892",
+  "name": "Angular Jira Clone",
+  "url": "https://github.com/trungk18/jira-clone-angular",
+  "description": "A Jira clone app built with Angular 10, Akita and ng-zorro - by trungk18",
+  "category": "Software",
+  "createdAt": "2020-06-12T16:00:00.000Z",
+  "updatedAt": "2020-06-13T16:00:00.000Z",
+  "users": [
+    {
+      "id": "d65047e5-f4cf-4caa-9a38-6073dcbab7d1",
+      "name": "Aditya",
+      "avatarUrl":"",
+      "projectId": "140892"
+    },
+    {
+      "id": "7ac265f9-b9ac-443f-a2b2-795682e579a4",
+      "name": "Harsh",
+      "avatarUrl":"",
+      "projectId": "140892"
+    },
+    {
+      "id": "94502aad-c97f-43e1-a9d1-28cf3e4937a7",
+      "name": "Yash",
+      "avatarUrl":"",
+      "projectId": "140892"
+    },
+    {
+      "id": "610451aa-10c8-4d7e-9363-311357c0b0dd",
+      "name": "Jaydip",
+      "avatarUrl":"",
+      "projectId": "140892"
+    }
+  ],
+  "issues": [
+    {
+      "createdAt": "2020-08-27T14:23:38.183Z",
+      "description": "<p>I shared some of my technical decisions behind <a href='http://jira.trungk18.com' rel='noopener noreferrer' target='_blank'>jira.trungk18.com</a> on <a href='https://github.com/SingaporeJS/talk.js/issues/40' rel='noopener noreferrer' target='_blank'>Singapore talk.js August 2020</a> with a very catchy title - <strong>Behind the 900 stars repository 😂</strong> Do you like it? </p><p><br></p><p> Hopefully I can change the title to a thousand stars soon... 🤣</p><p><br></p><p>Thanks for having me!</p><p><br></p><p>See the </p><ul><li>Slide deck ➡ <a href='https://slides.com/tuantrungvo/behind-the-900-star-repository-jira-clone-angular' rel='noopener noreferrer' target='_blank' style='background-color: rgb(255, 255, 255);'>https://slides.com/tuantrungvo/behind-the-900-star-repository-jira-clone-angular</a></li><li><span style='background-color: rgb(255, 255, 255);'>Recorded talk:  </span><a href='https://youtu.be/X_beeihKk7o' rel='noopener noreferrer' target='_blank'>https://youtu.be/X_beeihKk7o</a></li></ul><p><br></p><p><img src='https://pbs.twimg.com/media/EgWe01qUcAIoNdi?format=jpg&amp;name=large' alt='Image'></p><p><br></p>",
+      "id": "6527",
+      "priority": "Medium",
+      "reporterId": "d65047e5-f4cf-4caa-9a38-6073dcbab7d1",
+      "status": "Done",
+      "title": "Behind the 900 stars - Update 08/2020",
+      "type": "Story",
+      "updatedAt": "2020-08-27T14:23:38.183Z",
+      "userIds": ["d65047e5-f4cf-4caa-9a38-6073dcbab7d1"],
+      "listPosition": 1
+    },
+    {
+      "type": "Story",
+      "priority": "Highest",
+      "title": "Angular Spotify 🎧",
+      "description": "<h3>Hey Angular people, what's up? 😆</h3><p>I wanted to introduce you my latest application: <strong>Angular Spotify.</strong></p><p><br></p><p>It is a simple Spotify client built with Angular 11, Nx workspace, ngrx, TailwindCSS and ng-zorro.</p><p><br></p><p>Check out the&nbsp;live application&nbsp;-&gt; <a href=\"https://spotify.trungk18.com\" rel=\"noopener noreferrer\" target=\"_blank\">https://spotify.trungk18.com</a></p><p><span style=\"color: var(--color-text-link);\">Source code: </span><a href=\"https://github.com/trungk18/angular-spotify\" rel=\"noopener noreferrer\" target=\"_blank\">https://github.com/trungk18/angular-spotify</a></p><p><br></p><p>Spotify premium&nbsp;is required for the Web Playback SDK to play music. If you are using a free account, you can still browse the app, but it couldn't play the music. Sorry about that&nbsp;🤣</p><h2><br></h2><p><a href=\"https://github.com/trungk18/angular-spotify/blob/main/libs/web/shared/assets/src/assets/readme/angular-spotify-demo-short.gif\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: var(--color-text-link); background-color: var(--color-bg-primary);\"><img src=\"https://github.com/trungk18/angular-spotify/raw/main/libs/web/shared/assets/src/assets/readme/angular-spotify-demo-short.gif\" alt=\"Angular Spotify Demo\"></a></p><p><br></p><p><br></p><p><a href=\"https://github.com/trungk18/angular-spotify/blob/main/libs/web/shared/assets/src/assets/readme/angular-spotify-visualization.gif\" rel=\"noopener noreferrer\" target=\"_blank\" style=\"color: var(--color-text-link); background-color: var(--color-bg-primary);\"><img src=\"https://github.com/trungk18/angular-spotify/raw/main/libs/web/shared/assets/src/assets/readme/angular-spotify-visualization.gif\" alt=\"Angular Spotify Visualizer\"></a></p><p><br></p>",
+      "reporterId": "d65047e5-f4cf-4caa-9a38-6073dcbab7d1",
+      "userIds": ["d65047e5-f4cf-4caa-9a38-6073dcbab7d1"],
+      "id": "2021",
+      "status": "Backlog",
+      "createdAt": "2021-04-28T14:56:55.049Z",
+      "updatedAt": "2021-04-28T14:56:57.748Z",
+      "listPosition": 1
+    },
+    {
+      "id": "9210",
+      "title": "TailwindCSS configuration 😭😭😭",
+      "description": "<h1>No official guide to configure TailwindCSS and Angular<strong>⛏️⛏️</strong></h1><p><br></p><p>It took me few hours to try and configure with different option. Also, was confuse when PurgeCSS remove ng-zorro style...</p><p><br></p><p>I wrote one myself</p><p><br></p><p><a href='https://trungk18.com/experience/configure-tailwind-css-with-angular/' rel='noopener noreferrer' target='_blank'>https://trungk18.com/experience/configure-tailwind-css-with-angular/</a></p><p><br></p>",
+      "type": "Task",
+      "status": "Done",
+      "priority": "Medium",
+      "listPosition": 2,
+      "createdAt": "2020-06-12T14:40:01.262Z",
+      "updatedAt": "2020-06-12T14:40:01.262Z",
+      "reporterId": "d65047e5-f4cf-4caa-9a38-6073dcbab7d1",
+      "userIds": ["d65047e5-f4cf-4caa-9a38-6073dcbab7d1", "94502aad-c97f-43e1-a9d1-28cf3e4937a7"]
+    },
+    {
+      "id": "9631",
+      "title": "Each issue has a single reporter but can have multiple assignees.",
+      "description": "<h2>Try assigning this issue to <strong><u>Spider Man</u></strong>. <span style='color: rgb(51, 51, 51);'>🤣&nbsp;🤣&nbsp;🤣</span></h2>",
+      "type": "Task",
+      "status": "Selected",
+      "priority": "Low",
+      "listPosition": 2,
+      "createdAt": "2020-06-12T14:40:01.350Z",
+      "updatedAt": "2020-06-12T14:51:09.653Z",
+      "reporterId": "d65047e5-f4cf-4caa-9a38-6073dcbab7d1",
+      "userIds": ["610451aa-10c8-4d7e-9363-311357c0b0dd", "94502aad-c97f-43e1-a9d1-28cf3e4937a7"]
+    },
+    {
+      "id": "9548",
+      "title": "Make the CDK Drag and Drop animation smoother",
+      "description": "<h2>The drag and drop board is not working as I expected</h2><p>After finishing all the other heavy lifting parts, I will spend sometimes at the end to finalize the DnD. The current behavior is acceptable for now.</p><p><br></p><p><u>28 June 2020</u></p><p>After spending about half an hour on that, I found the bug. Basically, I applied the cdkDrag to my component issue-card. <u>Its height and width was collapsed to 0</u>. That's why the animation has no effect at all.</p><p><br></p><p>I fixed by fixing adding these CSS to the issue-card component.</p><p><br></p><pre class='ql-syntax' spellcheck='false'>:host&nbsp;{&nbsp;&nbsp;@apply&nbsp;flex&nbsp;flex-grow;&nbsp;&nbsp;margin-bottom:&nbsp;5px;}</pre>",
+      "type": "Bug",
+      "status": "Done",
+      "priority": "High",
+      "listPosition": 1,
+      "createdAt": "2020-06-12T14:40:01.304Z",
+      "updatedAt": "2020-06-12T14:52:02.173Z",
+      "reporterId": "d65047e5-f4cf-4caa-9a38-6073dcbab7d1",
+      "userIds": ["d65047e5-f4cf-4caa-9a38-6073dcbab7d1"]
+    },
+    {
+      "id": "9667",
+      "title": "When creating an issue, the assignee list is not working properly on searching",
+      "description": "After searching for an assignee on the list and clear the text, the option label was missing. It could be the bug on the ng-zorro select itself. If you have any idea, feel free to create a pull request. <br/> <br/><img src='https://raw.githubusercontent.com/trungk18/jira-clone-angular/master/frontend/src/assets/img/assignee-bug.gif' alt='Assignee issue' />",
+      "type": "Bug",
+      "status": "Selected",
+      "priority": "High",
+      "listPosition": 1,
+      "createdAt": "2020-06-28T15:30:00.000Z",
+      "updatedAt": "2020-06-28T16:30:00.000Z",
+      "reporterId": "d65047e5-f4cf-4caa-9a38-6073dcbab7d1",
+      "userIds": ["d65047e5-f4cf-4caa-9a38-6073dcbab7d1"]
+    }
+  ]
+}

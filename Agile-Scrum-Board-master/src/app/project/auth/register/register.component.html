@@ -1,0 +1,67 @@
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+  <div class="container mx-auto my-5">
+    <div class="flex justify-center">
+      <div class="w-full max-w-md">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+          <div class="mb-6">
+            <h3 class="text-2xl font-bold text-primary">Register</h3>
+          </div>
+          <form class="form" #registerForm="ngForm">
+            <div class="mb-6">
+              <label for="username" class="block mb-2 font-bold text-gray-700">Username</label>
+              <input type="text" [(ngModel)]="registerUserData.email" name="email" class="form-input w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+              <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)" class="mt-1 text-sm text-red-600">
+                <div *ngIf="registerForm.controls['email'].errors?.required">
+                  Email is required.
+                </div>
+                <div *ngIf="registerForm.controls['email'].errors?.pattern">
+                  Enter valid email.
+                </div>                 
+              </div>
+            </div>
+            <div class="mb-6">
+              <label for="password" class="block mb-2 font-bold text-gray-700">Password</label>
+              <input type="password" [(ngModel)]="registerUserData.password" name="Password" class="form-input w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" id="password" required  minlength="6">
+              <div *ngIf="registerForm.controls['Password'].invalid && (registerForm.controls['Password'].dirty || registerForm.controls['Password'].touched)" class="mt-1 text-sm text-red-600">
+                <div *ngIf="registerForm.controls['Password'].errors?.required">
+                  Password is required.
+                </div>
+                <div *ngIf="registerForm.controls['Password'].errors?.minlength">
+                  Password must be at least 6 characters long.
+                </div>
+              </div>
+            </div>
+            <div class="mb-6">
+              <button type="button" (click)="registerUser()" [disabled]="registerForm.invalid" class="w-full py-2 px-4 bg-primary hover:bg-primary-dark text-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                Register
+              </button>
+            </div>
+
+
+            <div *ngIf="showErrorMessage" class="fixed inset-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-50">
+              <div class="bg-white rounded-lg shadow-lg p-8 w-96">
+                <div class="flex justify-end">
+                  <button type="button" class="text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" (click)="dismissError()" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="mt-4">
+                  <div class="text-red-500 font-bold text-lg">
+                    Error
+                  </div>
+                  <div class="text-gray-700 mt-4">
+                    User already exists.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
