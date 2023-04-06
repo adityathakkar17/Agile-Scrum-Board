@@ -4,6 +4,7 @@ const router = express.Router()
 const User = require('../models/user')
 const JIssueModel = require('../models/issue')
 const mongoose = require('mongoose')
+const TeamMemberModel = require('../models/TeamMember')
 const db = "mongodb+srv://harsh:Harsh123456@kanbanboard.vg71trr.mongodb.net/?retryWrites=true&w=majority"
 
 mongoose.connect(db, err => {
@@ -81,6 +82,22 @@ res.status(500).send('Internal server error');
           let payload = {
             subject: registeredUser._id
           }
+          const teammember = new TeamMemberModel({
+            name:registeredUser.email,
+            adminId: registeredUser._id
+          });
+          console.log(teammember);
+          // save the issue to MongoDB
+          teammember.save((error, savedMember) => {
+            if (error) {
+              console.log(error);
+              res.status(500).send('Internal server error');
+            }
+            else {
+              console.log('saved ');
+              
+            }
+          });
           let token = jwt.sign(payload, 'secretKey')
           res.status(200).send({ token })
         }
@@ -219,46 +236,49 @@ router.delete('/deleteIssue/:issueId', verifyToken, async (req, res) => {
       res.status(500).send('Internal server error');
     }
 });
-// router.get('/kananBoard', verifyToken, (req, res) => {
-//     let specialEvents = [
-//       {
-//         "_id": "1",
-//         "name": "Auto Expo Special",
-//         "description": "lorem ipsum",
-//         "date": "2012-04-23T18:25:43.511Z"
-//       },
-//       {
-//         "_id": "2",
-//         "name": "Auto Expo Special",
-//         "description": "lorem ipsum",
-//         "date": "2012-04-23T18:25:43.511Z"
-//       },
-//       {
-//         "_id": "3",
-//         "name": "Auto Expo Special",
-//         "description": "lorem ipsum",
-//         "date": "2012-04-23T18:25:43.511Z"
-//       },
-//       {
-//         "_id": "4",
-//         "name": "Auto Expo Special",
-//         "description": "lorem ipsum",
-//         "date": "2012-04-23T18:25:43.511Z"
-//       },
-//       {
-//         "_id": "5",
-//         "name": "Auto Expo Special",
-//         "description": "lorem ipsum",
-//         "date": "2012-04-23T18:25:43.511Z"
-//       },
-//       {
-//         "_id": "6",
-//         "name": "Auto Expo Special",
-//         "description": "lorem ipsum",
-//         "date": "2012-04-23T18:25:43.511Z"
-//       }
-//     ]
-//     res.json(specialEvents)
-//   })
+
+router.get('/getTeamMember/:userId', async (req, res) => {
+  const userId = req.params.userId;
+  try {
+    const members = await TeamMemberModel.find({ adminId: userId });
+    // console.log(jissues);
+    res.json(members);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+router.post('/saveTeamMember', verifyToken, async (req, res) => {
+  console.log('save member');
+  const teammember = new TeamMemberModel({
+    name: req.body.member.name,
+    adminId: req.body.userId
+  });
+  console.log(teammember);
+  // save the issue to MongoDB
+  teammember.save((error, savedMember) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Internal server error');
+    }
+    else {
+      console.log('saved ');
+      res.status(200).send(savedMember)
+    }
+  });
+});
+
+router.delete('/deleteTeamMember/:memberId', verifyToken, async (req, res) => {
+  try {
+    const teamMember= await TeamMemberModel.findByIdAndDelete(req.params.memberId);
+    if (!teamMember) {
+      return res.status(404).send('Issue not found');
+    }
+    res.status(200).send(teamMember);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal server error');
+  }
+});
 
 module.exports = router

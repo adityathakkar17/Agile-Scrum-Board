@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IssueType, JIssue, IssueStatus, IssuePriority } from '@trungk18/interface/issue';
+import { TeamMember } from '@trungk18/interface/teammember';
 import { quillConfiguration } from '@trungk18/project/config/editor';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { ProjectService } from '@trungk18/project/state/project/project.service';
@@ -12,21 +13,20 @@ import { JUser } from '@trungk18/interface/user';
 import { tap } from 'rxjs/operators';
 import { NoWhitespaceValidator } from '@trungk18/core/validators/no-whitespace.validator';
 import { DateUtil } from '@trungk18/project/utils/date';
-
 @Component({
-  selector: 'add-issue-modal',
-  templateUrl: './add-issue-modal.component.html',
-  styleUrls: ['./add-issue-modal.component.scss']
+  selector: 'add-user-modal',
+  templateUrl: './add-user-modal.component.html',
+  styleUrls: ['./add-user-modal.component.scss']
 })
 @UntilDestroy()
-export class AddIssueModalComponent implements OnInit {
+export class AddUserModalComponent implements OnInit {
   reporterUsers$: Observable<JUser[]>;
   assignees$: Observable<JUser[]>;
-  issueForm: FormGroup;
+  userForm: FormGroup;
   editorOptions = quillConfiguration;
 
   get f() {
-    return this.issueForm?.controls;
+    return this.userForm?.controls;
   }
 
   constructor(
@@ -37,44 +37,21 @@ export class AddIssueModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.reporterUsers$ = this._projectQuery.users$.pipe(
-      untilDestroyed(this),
-      tap((users) => {
-        const [user] = users;
-        if (user) {
-          this.f.reporterId.patchValue(user._id);
-        }
-      })
-    );
-
-    this.assignees$ = this._projectQuery.users$;
   }
-
   initForm() {
-    this.issueForm = this._fb.group({
-      type: [IssueType.TASK],
-      priority: [IssuePriority.MEDIUM],
-      title: ['', NoWhitespaceValidator()],
-      description: [''],
-      reporterId: [''],
-      userIds: [[]]
+    this.userForm = this._fb.group({
+      name: ['', NoWhitespaceValidator()],
     });
   }
-
   submitForm() {
-    if (this.issueForm.invalid) {
+    if (this.userForm.invalid) {
       return;
     }
-    const now = DateUtil.getNow();
-    const issue: JIssue = {
-      ...this.issueForm.getRawValue(),
-      id: IssueUtil.getRandomId(),
-      status: IssueStatus.BACKLOG,
-      createdAt: now,
-      updatedAt: now
+    const member: TeamMember = {
+      ...this.userForm.getRawValue()
     };
 
-    this._projectService.saveIssue(issue);
+    this._projectService.saveTeamMembers(member);
     this.closeModal();
   }
 

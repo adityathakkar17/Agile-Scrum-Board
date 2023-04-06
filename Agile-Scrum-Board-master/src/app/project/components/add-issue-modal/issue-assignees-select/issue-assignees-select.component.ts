@@ -15,6 +15,6 @@ export class IssueAssigneesSelectComponent {
   constructor() {}
 
   getUser(userId: string): any {
-    return this.users.find((user) => user.id === userId);
+    return this.users.find((user) => user._id === userId);
   }
 }

@@ -38,7 +38,7 @@ export class BoardFilterComponent implements OnInit {
   }
 
   isUserSelected(user: JUser) {
-    return this.userIds.includes(user.id);
+    return this.userIds.includes(user._id);
   }
 
   ignoreResolvedChanged() {
@@ -50,11 +50,17 @@ export class BoardFilterComponent implements OnInit {
   }
 
   userChanged(user: JUser) {
-    this.filterService.toggleUserId(user.id);
+    this.filterService.toggleUserId(user._id);
   }
 
   resetAll() {
     this.searchControl.setValue('');
     this.filterService.resetAll();
+  }
+
+  getUserAvatarUrl(user: any): string {
+    const baseUrl = 'https://ui-avatars.com/api/?name=';
+    const username = user.name.toLowerCase().replace(/\s/g, '');
+    return `${baseUrl}${username}.jpg`;
   }
 }

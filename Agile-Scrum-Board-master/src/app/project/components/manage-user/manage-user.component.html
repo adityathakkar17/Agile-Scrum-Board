@@ -1,0 +1,27 @@
+<div class="flex flex-col items-center">
+    <h1 class="text-3xl font-bold my-8">Manage Team-Members</h1>
+    <div class="w-1/2">
+      <table class="table-auto w-full">
+        <thead>
+          <tr>
+            <th class="px-4 py-2 bg-gray-200 text-center">Name</th>
+            <th class="px-4 py-2 bg-gray-200 text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td class="border px-4 py-2 text-center">{{ user.name }}</td>
+            <td class="border px-4 py-2 text-center">
+              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                (click)="deleteUser(user._id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="flex justify-center">
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded my-4"
+          (click)="cancel()">Close</button>
+      </div>
+    </div>
+  </div>
+  

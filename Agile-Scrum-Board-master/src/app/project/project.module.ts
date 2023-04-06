@@ -35,6 +35,8 @@ import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectComponent } from './project.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { AddUserModalComponent } from './components/add-user-modal/add-user-modal.component';
+import { ManageUserComponent } from './components/manage-user/manage-user.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { RegisterComponent } from './auth/register/register.component';
     IssueAssigneesSelectComponent,
     ResizerComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddUserModalComponent,
+    ManageUserComponent
   ],
   imports: [
     CommonModule,

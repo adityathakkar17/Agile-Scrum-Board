@@ -5,7 +5,7 @@ import { Query } from '@datorama/akita';
 @Injectable({ providedIn: 'root' })
 export class AuthQuery extends Query<AuthState> {
   user$ = this.select();
-  userId$ = this.select('id');
+  userId$ = this.select('_id');
 
   constructor(protected store: AuthStore) {
     super(store);

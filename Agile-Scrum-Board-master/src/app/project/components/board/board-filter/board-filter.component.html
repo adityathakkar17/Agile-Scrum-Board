@@ -14,18 +14,12 @@
              [nzTooltipTitle]="user.name">
             <j-avatar class="flex"
                       className="select-none shadow-outline-white"
-                      [avatarUrl]="user.avatarUrl"
+                      [avatarUrl]="getUserAvatarUrl(user)"
                       [size]="36"
                       (click)="userChanged(user)">
             </j-avatar>
         </div>
     </div>
-    <!-- <j-button class="ml-3"
-              className="btn-empty"
-              [isActive]="filterQuery.onlyMyIssue$ | async"
-              (click)="onlyMyIssueChanged()">
-        Only My Issues
-    </j-button>
     <j-button class="ml-3"
               [isActive]="filterQuery.ignoreResolve$ | async"
               (click)="ignoreResolvedChanged()"
@@ -38,5 +32,5 @@
         <j-button [className]="'btn-secondary'"
                   (click)="resetAll()">Clear all
         </j-button>
-    </div> -->
+    </div>
 </div>

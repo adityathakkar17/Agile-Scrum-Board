@@ -24,7 +24,7 @@ export class IssueCardComponent implements OnChanges, OnInit {
 
   ngOnInit(): void {
     this._projectQuery.users$.pipe(untilDestroyed(this)).subscribe((users) => {
-      this.assignees = this.issue.userIds.map((userId) => users.find((x) => x.id === userId));
+      this.assignees = this.issue.userIds.map((userId) => users.find((x) => x._id === userId));
     });
   }
 
@@ -47,4 +47,10 @@ export class IssueCardComponent implements OnChanges, OnInit {
       }
     });
   }
+  getUserAvatarUrl(user: any): string {
+    const baseUrl = 'https://ui-avatars.com/api/?name=';
+    const username = user.name.toLowerCase().replace(/\s/g, '');
+    return `${baseUrl}${username}.jpg`;
+  }
+  
 }

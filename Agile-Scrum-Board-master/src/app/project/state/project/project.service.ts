@@ -4,6 +4,7 @@ import { arrayRemove, arrayUpsert, setLoading } from '@datorama/akita';
 import { JComment } from '@trungk18/interface/comment';
 import { JIssue } from '@trungk18/interface/issue';
 import { JProject } from '@trungk18/interface/project';
+import { TeamMember } from '@trungk18/interface/teammember';
 import { JUser } from '@trungk18/interface/user';
 import { DateUtil } from '@trungk18/project/utils/date';
 import { of } from 'rxjs';
@@ -19,20 +20,11 @@ export class ProjectService {
   saveIssueUrl:string;
   getIssueUrl:string;
   updateIssueUrl:string;
+  saveTeamMemberUrl:string;
   deleteIssueUrl:string;
+  getTeamMemberUrl:string;
+  deleteTeamMemberUrl:string;
   isSaved:boolean;
-  users:JUser[]=[
-    {
-      id: "640a18f8d589ffa80ae530a5",
-      name: "Aditya",
-      avatarUrl:"",
-      email:"",
-      password:"",
-      createdAt:"",
-      updatedAt:"",
-      issueIds:[]
-    }
-  ]
   project=<JProject>{};
   constructor(private _http: HttpClient, private _store: ProjectStore) {
     this.baseUrl = environment.apiUrl;
@@ -40,6 +32,9 @@ export class ProjectService {
     this.updateIssueUrl =  "http://localhost:3000/api/updateIssue";
     this.deleteIssueUrl =  "http://localhost:3000/api/deleteIssue";
     this.getIssueUrl =  "http://localhost:3000/api/jissues";
+    this.saveTeamMemberUrl= "http://localhost:3000/api/saveTeamMember";
+    this.getTeamMemberUrl= "http://localhost:3000/api/getTeamMember"
+    this.deleteTeamMemberUrl= "http://localhost:3000/api/deleteTeamMember"
     this.isSaved=false;
   }
 
@@ -53,16 +48,23 @@ export class ProjectService {
   }
   getProject() {
     
-    
     this.getIssues().subscribe((response)=>{
-      this.project.users= this.users;
+      // this.project.users= this.getTeamMember();
       this.project.issues=response;
       console.log(this.project);
       this._store.update((state) => ({
         ...state,
         ...this.project
       }));
-    })
+    });
+    this.getTeamMember().subscribe((response)=>{
+      this.project.users= response;
+      console.log(this.project);
+      this._store.update((state) => ({
+        ...state,
+        ...this.project
+      }));
+    });
     // this._http
     //   .get<JProject>(`${this.getIssueUrl}/${userId}`)
     //   .pipe(
@@ -101,7 +103,7 @@ export class ProjectService {
         // Upsert the item in the collection
         console.log("inside update" );
        this.getIssues().subscribe((response)=>{
-          this.project.users= this.users;
+          //this.project.users= this.users;
           this.project.issues=response;
           console.log(this.project);
           this._store.update((state) => ({
@@ -125,7 +127,7 @@ export class ProjectService {
         // Upsert the item in the collection
         console.log("inside update" );
        this.getIssues().subscribe((response)=>{
-          this.project.users= this.users;
+          //this.project.users= this.users;
           this.project.issues=response;
           console.log(this.project);
           this._store.update((state) => ({
@@ -152,7 +154,7 @@ export class ProjectService {
       .then((response) => {
         // if the request was successful, update the state to remove the deleted issue
         this.getIssues().subscribe((response)=>{
-          this.project.users= this.users;
+
           this.project.issues=response;
           console.log(this.project);
           this._store.update((state) => ({
@@ -167,7 +169,64 @@ export class ProjectService {
     );
   }
   
+  saveTeamMembers(member: TeamMember) {
+      console.log(member);
+      
+      this._http.post(this.saveTeamMemberUrl, {'userId':localStorage.getItem('userId'),member})
+      .toPromise()
+      .then((response) => {
+        // Upsert the item in the collection
+        console.log("inside add user" );
+       this.getTeamMember().subscribe((response)=>{
+          this.project.users= <JUser[]>response;
+          console.log(this.project);
+          this._store.update((state) => ({
+            ...state,
+            ...this.project
+          }));
+      });
+    });
+    
+  }
+  getTeamMember() {
+    const userId=localStorage.getItem('userId');
+    return this._http.get<TeamMember[]>((`${this.getTeamMemberUrl}/${userId}`))
 
+
+    // const userId=localStorage.getItem('userId');
+    // this._http.get<TeamMember[]>((`${this.getTeamMemberUrl}/${userId}`)).subscribe((response)=>{
+    //   this.project.users= <JUser[]> response;
+    //   console.log(this.project.users);
+    //   this._store.update((state) => ({
+    //     ...state,
+    //     ...this.project
+    //   }));
+    // })
+
+  }
+
+  deleteTeamMember(memberId: string) {
+    // send a DELETE request to the server to delete the issue with the specified issueId
+    console.log("inside del");
+    this._http.delete(`${this.deleteTeamMemberUrl}/${memberId}`).toPromise()
+    .then((response) => {
+      // if the request was successful, update the state to remove the deleted issue
+      this.getTeamMember().subscribe((response)=>{
+
+        this.project.users= response;
+        console.log(this.project);
+        this._store.update((state) => ({
+          ...state,
+          ...this.project
+        }));
+      })
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
+     
+  }
   updateIssueComment(issueId: string, comment: JComment) {
     const allIssues = this._store.getValue().issues;
     const issue = allIssues.find((x) => x._id === issueId);

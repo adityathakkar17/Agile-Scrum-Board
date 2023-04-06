@@ -4,7 +4,7 @@
            nzNoAnimation>
     <nz-option nzCustomContent
                *ngFor="let user of users"
-               [nzValue]="user.id">
+               [nzValue]="user._id">
         <j-user [user]="user"></j-user>
     </nz-option>
 </nz-select>
