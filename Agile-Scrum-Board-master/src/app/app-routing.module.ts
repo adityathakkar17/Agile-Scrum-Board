@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './project/auth/auth.guard';
+import { ForgotPasswordComponent } from './project/auth/forgot-password/forgot-password.component';
 import { LoginComponent } from './project/auth/login/login.component';
 import { RegisterComponent } from './project/auth/register/register.component';
+import { ResetPasswordComponent } from './project/auth/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -29,7 +31,15 @@ const routes: Routes = [
     path: '',
     redirectTo: 'project',
     pathMatch: 'full'
-  }
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent
+  },
 ];
 
 @NgModule({

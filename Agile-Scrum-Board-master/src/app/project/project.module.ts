@@ -37,6 +37,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AddUserModalComponent } from './components/add-user-modal/add-user-modal.component';
 import { ManageUserComponent } from './components/manage-user/manage-user.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { ManageUserComponent } from './components/manage-user/manage-user.compon
     LoginComponent,
     RegisterComponent,
     AddUserModalComponent,
-    ManageUserComponent
+    ManageUserComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,

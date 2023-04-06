@@ -6,6 +6,9 @@ const JIssueModel = require('../models/issue')
 const mongoose = require('mongoose')
 const TeamMemberModel = require('../models/TeamMember')
 const db = "mongodb+srv://harsh:Harsh123456@kanbanboard.vg71trr.mongodb.net/?retryWrites=true&w=majority"
+const GLOBAL_MESSAGES = require('../global.messages')
+const GLOBAL_MAIL = require('../middleware/global.mail')
+const { mailTransporter, FROM_EMAIL_ADDRESS } = require('../middleware/global.mail')
 
 mongoose.connect(db, err => {
   if (err) {
@@ -280,5 +283,50 @@ router.delete('/deleteTeamMember/:memberId', verifyToken, async (req, res) => {
     res.status(500).send('Internal server error');
   }
 });
+router.get('/Forgotpassword/:email', async (req, res) => {
+  console.log("in forget");
+  let userData = req.params
+  console.log(userData)
+  User.findOne({ email: userData.email }, (error, user) => {
+    if (error) {
+      console.log(error)
+    }
+    else {
+      const FRONT_WEBSITE_URL = 'http://localhost:4200';
+      const resetPasswordLink = `${FRONT_WEBSITE_URL}/reset-password?id=${user._id}`
 
+      GLOBAL_MAIL.transporter.sendMail({
+        to: user.email,
+        from: FROM_EMAIL_ADDRESS,
+        subject: 'Forgot Password',
+        html: GLOBAL_MAIL.RESET_PASSWORD_HTML_TEMPLATE(resetPasswordLink, '')
+      }).then((mailSend) => {
+        if (mailSend) {
+          return GLOBAL_MESSAGES.DATA_SAVED_SUCCESSFULLY(res, 'Forgot Password', GLOBAL_MESSAGES.MAIL_SEND_SUCCESSFULLY_MESSAGE.replace('_LABEL_NAME', 'Forgot Password'));;
+        }
+        return GLOBAL_MESSAGES.GOT_ERROR(res, new Error(GLOBAL_MESSAGES.ERROR_WHILE_MAIL_SEND_MESSAGE.replace('_LABEL_NAME', 'Forgot Password')), 'Forgot password');
+      })
+    }
+  })
+});
+
+router.post('/reset-password', async (req, res) => {
+  let data = req.body;
+  console.log("api calling" + data.password)+data.userid;
+  try{
+
+    const updatedUser = await User.findByIdAndUpdate(data.userid, {
+      "password":data.password
+        });
+        if (!updatedUser) {
+          res.status(404).send({'message':`User not found with _id: ${data.userid}`});
+          return;
+        }
+        console.log('updated');
+        res.status(200).send({'message':'Password reset successfully'});
+} catch (error) {
+  console.log(error);
+  res.status(500).send({'message':'Internal server error'});
+}
+});
 module.exports = router

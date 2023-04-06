@@ -22,7 +22,7 @@ export class ProjectQuery extends Query<ProjectState> {
     const issuesByStatus = raw.issues.filter(x => x.status === status);
     return issuesByStatus.length;
   };
-
+  
   issueByStatusSorted$ = (status: IssueStatus): Observable<JIssue[]> => this.issues$.pipe(
       map((issues) => issues
           .filter((x) => x.status === status)
@@ -32,7 +32,7 @@ export class ProjectQuery extends Query<ProjectState> {
     issueByPrioritySorted$ = (status: IssueStatus): Observable<JIssue[]> => this.issues$.pipe(
       map((issues) => issues
           .filter((x) => x.status === status)
-          .sort((a, b) => a.listPosition - b.listPosition))
+          .sort((a, b) => this.getIssuePriorityNumber(a.priority) - this.getIssuePriorityNumber(b.priority)))
     );
 
   issueById$(issueId: string){
@@ -40,5 +40,19 @@ export class ProjectQuery extends Query<ProjectState> {
       delay(500),
       map((issues) => issues.find(x => x._id === issueId))
     );
+  }
+
+  getIssuePriorityNumber(priority: string)
+  {
+    if(priority=='Lowest')
+    return 1;
+    else if(priority=='Low')
+    return 2;
+    else if(priority=='Medium')
+    return 3;
+    else if(priority=='High')
+    return 4;
+    else if(priority=='Highest')
+    return 5;
   }
 }

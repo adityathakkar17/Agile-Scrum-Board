@@ -1,10 +1,11 @@
 <div class="mt-6 mb-1 uppercase text-textMedium text-13 font-bold">
     Reporter
 </div>
+
 <j-button className="btn-secondary"
           nz-dropdown
           [nzTrigger]="'click'"
-          [nzDropdownMenu]="menu">
+          [nzDropdownMenu]="menu">  
     <j-user [user]="reporter"></j-user>
 </j-button>
 <nz-dropdown-menu #menu="nzDropdownMenu">

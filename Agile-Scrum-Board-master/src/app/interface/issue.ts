@@ -1,4 +1,3 @@
-
 import { JComment } from './comment';
 
 /* eslint-disable no-shadow */
@@ -30,7 +29,13 @@ export enum IssuePriority {
   HIGH = 'High',
   HIGHEST = 'Highest'
 }
-
+export enum IssuePriorityNumber {
+  LOWEST = 1,
+  LOW = 2,
+  MEDIUM = 3,
+  HIGH = 4,
+  HIGHEST = 5
+}
 export const IssuePriorityColors = {
   [IssuePriority.HIGHEST]: '#CD1317',
   [IssuePriority.HIGH]: '#E9494A',

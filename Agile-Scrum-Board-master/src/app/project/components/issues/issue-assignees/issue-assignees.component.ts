@@ -46,4 +46,9 @@ export class IssueAssigneesComponent implements OnInit, OnChanges {
   isUserSelected(user: JUser): boolean {
     return this.issue.userIds.includes(user._id);
   }
+  getUserAvatarUrl(user: any): string {
+    const baseUrl = 'https://ui-avatars.com/api/?name=';
+    const username = user.name.toLowerCase().replace(/\s/g, '');
+    return `${baseUrl}${username}.jpg`;
+  }
 }

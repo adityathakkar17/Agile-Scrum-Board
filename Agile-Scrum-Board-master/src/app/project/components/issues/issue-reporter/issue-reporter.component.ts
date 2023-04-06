@@ -34,4 +34,9 @@ export class IssueReporterComponent implements OnChanges {
       reporterId: user._id
     });
   }
+  getUserAvatarUrl(user: any): string {
+    const baseUrl = 'https://ui-avatars.com/api/?name=';
+    const username = user.name.toLowerCase().replace(/\s/g, '');
+    return `${baseUrl}${username}.jpg`;
+  }
 }

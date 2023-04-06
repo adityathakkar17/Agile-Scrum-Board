@@ -7,6 +7,8 @@ export class AuthService {
 
   private _registerUrl = "http://localhost:3000/api/register";
   private _loginUrl = "http://localhost:3000/api/login";
+  private _forgotpasswordurl = "http://localhost:3000/api/Forgotpassword";
+  private _resetpasswordurl = "http://localhost:3000/api/reset-password";
 
   constructor(private http: HttpClient,
               private _router: Router) { }
@@ -31,5 +33,14 @@ export class AuthService {
 
   loggedIn() {
     return !!localStorage.getItem('token')    
+  }
+  forgotpassword(email:string){
+    console.log("inservice file " + email);
+   return this.http.get<any>(`${this._forgotpasswordurl}/${email}`);
+  }
+
+  resetpassword(password:string ,userid:string)
+  {
+    return this.http.post<any>(this._resetpasswordurl,{"password":password,"userid":userid})
   }
 }
