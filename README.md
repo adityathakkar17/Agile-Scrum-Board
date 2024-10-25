@@ -33,7 +33,7 @@ The application follows a standard architecture where the frontend Angular appli
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your_username/agile-scrum-board.git
+   git clone https://github.com/adityathakkar17/agile-scrum-board.git
    cd agile-scrum-board
    ```
 
