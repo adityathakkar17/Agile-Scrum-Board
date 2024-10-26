@@ -75,7 +75,7 @@ The application follows a standard architecture where the frontend Angular appli
 ![Agile Scrum Board Home Page](./Agile-Scrum-Board-master/src/assets/img/agile_scrum_board.png)
 
 ## Add Issue
-![Agile Scrum Board Add Issue](./Agile-Scrum-Board-master/src/assets/img/img/add_issue.png)
+![Agile Scrum Board Add Issue](./Agile-Scrum-Board-master/src/assets/img/add_issue.png)
 
 ## View Issue
 ![Agile Scrum Board View Issue](./Agile-Scrum-Board-master/src/assets/img/agile_scrum_board.png)
