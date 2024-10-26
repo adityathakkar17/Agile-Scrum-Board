@@ -27,7 +27,7 @@ The **Agile Scrum Board** is a web-based project management tool that facilitate
 ## System Architecture
 The application follows a standard architecture where the frontend Angular application interacts with the backend Node.js & Express.js API, which, in turn, communicates with MongoDB to store and retrieve data.
 
-![Application Architecture](./path_to_image)
+![Application Architecture](./Agile-Scrum-Board-master/src/assets/img/agile_scrum_board.png)
 
 ## How to Run the Project
 
@@ -82,9 +82,6 @@ npm test
 - **Integration with Time-Tracking Tools:** Integrate with third-party tools like time-tracking or invoicing software for enhanced efficiency.
 - **Team Member Logins:** Expand the system to allow team members to manage their assigned tasks.
 - **Customization Options:** Provide more configurable options to tailor the Scrum Board to different project needs.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Acknowledgements
 We would like to thank our mentors and colleagues at HHAeXchange for their continuous guidance and support during the project development.
