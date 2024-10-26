@@ -71,6 +71,18 @@ The application follows a standard architecture where the frontend Angular appli
 - **Delete Task:** `DELETE /api/tasks/:id`
 - **Get Tasks:** `GET /api/tasks`
 
+## Home Page
+![Agile Scrum Board Home Page](./Agile-Scrum-Board-master/src/assets/img/agile_scrum_board.png)
+
+## Add Issue
+![Agile Scrum Board Add Issue](./Agile-Scrum-Board-master/src/assets/img/img/add_issue.png)
+
+## View Issue
+![Agile Scrum Board View Issue](./Agile-Scrum-Board-master/src/assets/img/agile_scrum_board.png)
+
+## Search Issues
+![Agile Scrum Board Search Issues](./Agile-Scrum-Board-master/src/assets/img/bugs/search-one-letter-bug-fixed.gif)
+
 ## Testing
 Unit testing is implemented using Jasmine for the Angular application. To run tests, execute the following in the `frontend` folder:
 ```bash
