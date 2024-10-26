@@ -27,7 +27,7 @@ The **Agile Scrum Board** is a web-based project management tool that facilitate
 ## System Architecture
 The application follows a standard architecture where the frontend Angular application interacts with the backend Node.js & Express.js API, which, in turn, communicates with MongoDB to store and retrieve data.
 
-![Application Architecture](./Agile-Scrum-Board-master/src/assets/img/agile_scrum_board.png)
+![Application Architecture](./Agile-Scrum-Board-master/src/assets/img/architecture_agile_scrum.png)
 
 ## How to Run the Project
 
