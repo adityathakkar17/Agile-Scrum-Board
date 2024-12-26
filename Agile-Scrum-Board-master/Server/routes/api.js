@@ -5,7 +5,7 @@ const User = require('../models/user')
 const JIssueModel = require('../models/issue')
 const mongoose = require('mongoose')
 const TeamMemberModel = require('../models/TeamMember')
-const db = "mongodb+srv://harsh:Harsh123456@kanbanboard.vg71trr.mongodb.net/?retryWrites=true&w=majority"
+const db = process.env.db
 const GLOBAL_MESSAGES = require('../global.messages')
 const GLOBAL_MAIL = require('../middleware/global.mail')
 const { mailTransporter, FROM_EMAIL_ADDRESS } = require('../middleware/global.mail')
