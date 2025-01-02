@@ -2,5 +2,7 @@ import { EnvironmentModel } from './environment-model';
 
 export const environment: EnvironmentModel = {
   production: true,
-  apiUrl: '/assets/data' // 'https://jira-clone-angular-api.herokuapp.com'
+  registerUrl : 'https://agile-scrum-board-vf0y.onrender.com/api/register',
+  loginUrl : 'https://agile-scrum-board-vf0y.onrender.com/api/login',
+  apiUrl: '/assets/data' 
 };
