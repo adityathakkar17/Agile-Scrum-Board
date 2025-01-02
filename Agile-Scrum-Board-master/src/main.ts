@@ -21,6 +21,7 @@ const initSentry = () => {
 };
 
 if (environment.production) {
+  
   enableProdMode();
   initSentry();
 }
