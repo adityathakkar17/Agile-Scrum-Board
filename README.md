@@ -12,17 +12,19 @@ The **Agile Scrum Board** is a web-based project management tool that facilitate
 - **Drag-and-Drop Interface:** Move tasks between stages using an intuitive drag-and-drop interface.
 
 ## Technologies Used
-- **Frontend:**
-  - Angular
-  - Tailwind CSS
-- **Backend:**
-  - Node.js
-  - Express.js
-  - MongoDB (NoSQL Database)
-- **Others:**
-  - Visual Studio Code
-  - MongoDB Atlas (Cloud Database)
-  - Jasmine (Unit Testing)
+### Frontend:
+- ![Angular](https://img.shields.io/badge/Angular-red?logo=angular&logoColor=white)
+- ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-gray?logo=tailwindcss&logoColor=white)
+
+### Backend:
+- ![Node.js](https://img.shields.io/badge/Node.js-green?logo=node.js&logoColor=white)
+- ![Express.js](https://img.shields.io/badge/Express.js-black?logo=express&logoColor=white)
+- ![MongoDB](https://img.shields.io/badge/MongoDB-green?logo=mongodb&logoColor=white)
+
+### Others:
+- ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-blue?logo=visualstudiocode&logoColor=white)
+- ![MongoDB Atlas](https://img.shields.io/badge/MongoDB%20Atlas-green?logo=mongodb&logoColor=white)
+- ![Jasmine](https://img.shields.io/badge/Jasmine-orange?logo=jasmine&logoColor=white)
 
 ## System Architecture
 The application follows a standard architecture where the frontend Angular application interacts with the backend Node.js & Express.js API, which, in turn, communicates with MongoDB to store and retrieve data.
